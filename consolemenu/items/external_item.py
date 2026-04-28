@@ -16,12 +16,10 @@ class ExternalItem(MenuItem):
         """
         This class overrides this method
         """
-        self.menu.pause()
-        self.menu.clear_screen()
+        pass
 
     def clean_up(self):
         """
         This class overrides this method
         """
-        self.menu.clear_screen()
-        self.menu.resume()
+        pass

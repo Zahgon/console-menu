@@ -27,38 +27,34 @@ class SubmenuItem(MenuItem):
 
         :param ConsoleMenu menu: the menu
         """
-        self.menu = menu
-        self.get_submenu().parent = menu
+        pass
 
     def set_up(self):
         """
         This class overrides this method
         """
-        self.menu.pause()
-        self.menu.clear_screen()
+        pass
 
     def action(self):
         """
         This class overrides this method
         """
-        self.get_submenu().start()
+        pass
 
     def clean_up(self):
         """
         This class overrides this method
         """
-        self.get_submenu().join()
-        self.menu.clear_screen()
-        self.menu.resume()
+        pass
 
     def get_return(self):
         """
         :return: The returned value in the submenu
         """
-        return self.get_submenu().returned_value
+        pass
 
     def get_submenu(self):
         """
         We unwrap the submenu variable in case it is a reference to a method that returns a submenu
         """
-        return self.submenu if not callable(self.submenu) else self.submenu()
+        pass

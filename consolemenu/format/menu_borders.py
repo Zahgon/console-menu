@@ -79,43 +79,43 @@ class AsciiBorderStyle(MenuBorderStyle):
     """
 
     @property
-    def bottom_left_corner(self): return '+'
+    pass
 
     @property
-    def bottom_right_corner(self): return '+'
+    pass
 
     @property
-    def inner_horizontal(self): return '-'
+    pass
 
     @property
-    def inner_vertical(self): return '|'
+    pass
 
     @property
-    def intersection(self): return '+'
+    pass
 
     @property
-    def outer_horizontal(self): return '-'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return '+'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return '+'
+    pass
 
     @property
-    def outer_vertical(self): return '|'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return '|'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return '|'
+    pass
 
     @property
-    def top_left_corner(self): return '+'
+    pass
 
     @property
-    def top_right_corner(self): return '+'
+    pass
 
 
 class LightBorderStyle(MenuBorderStyle):
@@ -124,43 +124,43 @@ class LightBorderStyle(MenuBorderStyle):
     """
 
     @property
-    def bottom_left_corner(self): return u'\u2514'
+    pass
 
     @property
-    def bottom_right_corner(self): return u'\u2518'
+    pass
 
     @property
-    def inner_horizontal(self): return u'\u2500'
+    pass
 
     @property
-    def inner_vertical(self): return u'\u2502'
+    pass
 
     @property
-    def intersection(self): return u'\u253C'
+    pass
 
     @property
-    def outer_horizontal(self): return u'\u2500'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return u'\u252C'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return u'\u2534'
+    pass
 
     @property
-    def outer_vertical(self): return u'\u2502'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return u'\u2524'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return u'\u251C'
+    pass
 
     @property
-    def top_left_corner(self): return u'\u250C'
+    pass
 
     @property
-    def top_right_corner(self): return u'\u2510'
+    pass
 
 
 class HeavyBorderStyle(MenuBorderStyle):
@@ -169,43 +169,43 @@ class HeavyBorderStyle(MenuBorderStyle):
     """
 
     @property
-    def bottom_left_corner(self): return u'\u2517'
+    pass
 
     @property
-    def bottom_right_corner(self): return u'\u251B'
+    pass
 
     @property
-    def inner_horizontal(self): return u'\u2501'
+    pass
 
     @property
-    def inner_vertical(self): return u'\u2503'
+    pass
 
     @property
-    def intersection(self): return u'\u254B'
+    pass
 
     @property
-    def outer_horizontal(self): return u'\u2501'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return u'\u2533'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return u'\u253B'
+    pass
 
     @property
-    def outer_vertical(self): return u'\u2503'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return u'\u252B'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return u'\u2523'
+    pass
 
     @property
-    def top_left_corner(self): return u'\u250F'
+    pass
 
     @property
-    def top_right_corner(self): return u'\u2513'
+    pass
 
 
 class HeavyOuterLightInnerBorderStyle(HeavyBorderStyle):
@@ -215,25 +215,25 @@ class HeavyOuterLightInnerBorderStyle(HeavyBorderStyle):
     """
 
     @property
-    def inner_horizontal(self): return u'\u2500'
+    pass
 
     @property
-    def inner_vertical(self): return u'\u2502'
+    pass
 
     @property
-    def intersection(self): return u'\u253C'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return u'\u252F'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return u'\u2537'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return u'\u2528'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return u'\u2520'
+    pass
 
 
 class DoubleLineBorderStyle(MenuBorderStyle):
@@ -242,43 +242,43 @@ class DoubleLineBorderStyle(MenuBorderStyle):
     """
 
     @property
-    def bottom_left_corner(self): return u'\u255A'
+    pass
 
     @property
-    def bottom_right_corner(self): return u'\u255D'
+    pass
 
     @property
-    def inner_horizontal(self): return u'\u2550'
+    pass
 
     @property
-    def inner_vertical(self): return u'\u2551'
+    pass
 
     @property
-    def intersection(self): return u'\u256C'
+    pass
 
     @property
-    def outer_horizontal(self): return u'\u2550'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return u'\u2566'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return u'\u2569'
+    pass
 
     @property
-    def outer_vertical(self): return u'\u2551'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return u'\u2563'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return u'\u2560'
+    pass
 
     @property
-    def top_left_corner(self): return u'\u2554'
+    pass
 
     @property
-    def top_right_corner(self): return u'\u2557'
+    pass
 
 
 class DoubleLineOuterLightInnerBorderStyle(DoubleLineBorderStyle):
@@ -288,25 +288,25 @@ class DoubleLineOuterLightInnerBorderStyle(DoubleLineBorderStyle):
     """
 
     @property
-    def inner_horizontal(self): return u'\u2500'
+    pass
 
     @property
-    def inner_vertical(self): return u'\u2502'
+    pass
 
     @property
-    def intersection(self): return u'\u253C'
+    pass
 
     @property
-    def outer_horizontal_inner_down(self): return u'\u2564'
+    pass
 
     @property
-    def outer_horizontal_inner_up(self): return u'\u2567'
+    pass
 
     @property
-    def outer_vertical_inner_left(self): return u'\u2562'
+    pass
 
     @property
-    def outer_vertical_inner_right(self): return u'\u255F'
+    pass
 
 
 class MenuBorderStyleType(object):
@@ -360,22 +360,7 @@ class MenuBorderStyleFactory(object):
             :obj:`MenuBorderStyle`: a new MenuBorderStyle instance of the specified style.
 
         """
-        if border_style_type == MenuBorderStyleType.ASCII_BORDER:
-            return self.create_ascii_border()
-        elif border_style_type == MenuBorderStyleType.LIGHT_BORDER:
-            return self.create_light_border()
-        elif border_style_type == MenuBorderStyleType.HEAVY_BORDER:
-            return self.create_heavy_border()
-        elif border_style_type == MenuBorderStyleType.DOUBLE_LINE_BORDER:
-            return self.create_doubleline_border()
-        elif border_style_type == MenuBorderStyleType.HEAVY_OUTER_LIGHT_INNER_BORDER:
-            return self.create_heavy_outer_light_inner_border()
-        elif border_style_type == MenuBorderStyleType.DOUBLE_LINE_OUTER_LIGHT_INNER_BORDER:
-            return self.create_doubleline_outer_light_inner_border()
-        else:
-            # Use ASCII if we don't recognize the type
-            self.logger.info('Unrecognized border style type: {}. Defaulting to ASCII.'.format(border_style_type))
-            return self.create_ascii_border()
+        pass
 
     def create_ascii_border(self):
         """
@@ -384,7 +369,7 @@ class MenuBorderStyleFactory(object):
         Returns:
             :obj:`AsciiBorderStyle`:  a new instance of AsciiBorderStyle.
         """
-        return AsciiBorderStyle()
+        pass
 
     def create_light_border(self):
         """
@@ -393,7 +378,7 @@ class MenuBorderStyleFactory(object):
         Returns:
             :obj:`LightBorderStyle`: a new instance of LightBorderStyle
         """
-        return LightBorderStyle()
+        pass
 
     def create_heavy_border(self):
         """
@@ -406,11 +391,7 @@ class MenuBorderStyleFactory(object):
             :obj:`HeavyBorderStyle` or :obj:`DoubleLineBorderStyle`: a new instance of HeavyBorderStyle, unless on
             Windows and pre-Python 3.5, in which case a new instance of DoubleLineBorderStyle will be returned.
         """
-        # Special case for Windows...
-        if self.is_win_python35_or_earlier():
-            return DoubleLineBorderStyle()
-        # All other platforms...
-        return HeavyBorderStyle()
+        pass
 
     def create_heavy_outer_light_inner_border(self):
         """
@@ -425,11 +406,7 @@ class MenuBorderStyleFactory(object):
             HeavyOuterLightInnerBorderStyle, unless on Windows and pre-Python 3.5, in which case a new instance of
             DoubleLineOuterLightInnerBorderStyle will be returned.
         """
-        # Special case for Windows...
-        if self.is_win_python35_or_earlier():
-            return DoubleLineOuterLightInnerBorderStyle()
-        # All other platforms...
-        return HeavyOuterLightInnerBorderStyle()
+        pass
 
     def create_doubleline_border(self):
         """
@@ -438,7 +415,7 @@ class MenuBorderStyleFactory(object):
         Returns:
             :obj:`DoubleLineBorderStyle`: a new instance of DoubleLineBorderStyle.
         """
-        return DoubleLineBorderStyle()
+        pass
 
     def create_doubleline_outer_light_inner_border(self):
         """
@@ -448,7 +425,7 @@ class MenuBorderStyleFactory(object):
         Returns:
             :obj:`DoubleLineOuterLightInnerBorderStyle`: a new instance of DoubleLineOuterLightInnerBorderStyle
         """
-        return DoubleLineOuterLightInnerBorderStyle()
+        pass
 
     @staticmethod
     def is_win_python35_or_earlier():
@@ -459,5 +436,4 @@ class MenuBorderStyleFactory(object):
             bool: True if the current platform is Windows and the Python interpreter is 3.5 or earlier; False otherwise.
 
         """
-        return sys.platform.startswith("win") and sys.version_info.major < 3 or (
-                    sys.version_info.major == 3 and sys.version_info.minor < 6)
+        pass

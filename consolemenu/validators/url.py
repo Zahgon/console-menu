@@ -22,5 +22,4 @@ class UrlValidator(BaseValidator):
 
         :return: True if match / False otherwise
         """
-        parsed_url = urlparse(url=input_string)
-        return bool(parsed_url.scheme and parsed_url.netloc)
+        pass

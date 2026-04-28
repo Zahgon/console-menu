@@ -53,13 +53,11 @@ class MenuStyle(object):
         Returns:
             :obj:`MenuMargins`: The MenuMargins instance.
         """
-        return self.__margins
+        pass
 
     @margins.setter
     def margins(self, margins):
-        if not isinstance(margins, MenuMargins):
-            raise TypeError('margins must be of type MenuMargins')
-        self.__margins = margins
+        pass
 
     @property
     def padding(self):
@@ -69,13 +67,11 @@ class MenuStyle(object):
         Returns:
             :obj:`MenuPadding`: The MenuPadding instance.
         """
-        return self.__padding
+        pass
 
     @padding.setter
     def padding(self, padding):
-        if not isinstance(padding, MenuPadding):
-            raise TypeError('padding must be of type MenuPadding')
-        self.__padding = padding
+        pass
 
     @property
     def border_style(self):
@@ -85,13 +81,11 @@ class MenuStyle(object):
         Returns:
             :obj:`MenuBorderStyle`: The MenuBorderStyle instance.
         """
-        return self.__border_style
+        pass
 
     @border_style.setter
     def border_style(self, border_style):
-        if not isinstance(border_style, MenuBorderStyle):
-            raise TypeError('border_style must be of type MenuBorderStyle')
-        self.__border_style = border_style
+        pass
 
     @property
     def border_style_factory(self):
@@ -102,10 +96,8 @@ class MenuStyle(object):
             :obj:`MenuBorderStyleFactory`: The MenuBorderStyleFactory instance.
 
         """
-        return self.__border_style_factory
+        pass
 
     @border_style_factory.setter
     def border_style_factory(self, border_style_factory):
-        if not isinstance(border_style_factory, MenuBorderStyleFactory):
-            raise TypeError('border_style_factory must be of type MenuBorderStyleFactory')
-        self.__border_style_factory = border_style_factory
+        pass

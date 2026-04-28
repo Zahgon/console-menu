@@ -90,20 +90,14 @@ class ConsoleMenu(object):
         :obj:`consolemenu.items.MenuItem`: The item corresponding to the menu option that is currently highlighted,
             or None.
         """
-        if self.items:
-            return self.items[self.current_option]
-        else:
-            return None
+        pass
 
     @property
     def selected_item(self):
         """
         :obj:`consolemenu.items.MenuItem`:  The item in :attr:`items` that the user most recently selected, or None.
         """
-        if self.items and self.selected_option != -1:
-            return self.items[self.current_option]
-        else:
-            return None
+        pass
 
     def append_item(self, item):
         """
@@ -113,11 +107,7 @@ class ConsoleMenu(object):
             item (MenuItem): The item to be added.
 
         """
-        did_remove = self.remove_exit()
-        item.menu = self
-        self.items.append(item)
-        if did_remove:
-            self.add_exit()
+        pass
 
     def remove_item(self, item):
         """
@@ -129,11 +119,7 @@ class ConsoleMenu(object):
         Returns:
             bool: True if the item was removed; False otherwise.
         """
-        for idx, _item in enumerate(self.items):
-            if item == _item:
-                del self.items[idx]
-                return True
-        return False
+        pass
 
     def add_exit(self):
         """
@@ -142,10 +128,7 @@ class ConsoleMenu(object):
         Returns:
             bool: True if item needed to be added, False otherwise.
         """
-        if not self.items or self.items[-1] is not self.exit_item:
-            self.items.append(self.exit_item)
-            return True
-        return False
+        pass
 
     def remove_exit(self):
         """
@@ -154,11 +137,7 @@ class ConsoleMenu(object):
         Returns:
             bool: True if item needed to be removed, False otherwise.
         """
-        if self.items:
-            if self.items[-1] is self.exit_item:
-                del self.items[-1]
-                return True
-        return False
+        pass
 
     def is_selected_item_exit(self):
         """
@@ -167,13 +146,10 @@ class ConsoleMenu(object):
         Returns:
             bool: True if the currently selected item is the Exit Menu item; False otherwise.
         """
-        return self.selected_item and self.selected_item is self.exit_item
+        pass
 
     def _wrap_start(self):
-        self._main_loop()
-        ConsoleMenu.currently_active_menu = None
-        self.clear_screen()
-        ConsoleMenu.currently_active_menu = self.previous_active_menu
+        pass
 
     def start(self, show_exit_option=None):
         """
@@ -186,26 +162,7 @@ class ConsoleMenu(object):
                 set in the constructor
 
         """
-        self.previous_active_menu = ConsoleMenu.currently_active_menu
-        ConsoleMenu.currently_active_menu = None
-
-        self.should_exit = False
-
-        if show_exit_option is None:
-            show_exit_option = self.show_exit_option
-
-        if show_exit_option:
-            self.add_exit()
-        else:
-            self.remove_exit()
-
-        try:
-            self._main_thread = threading.Thread(target=self._wrap_start, daemon=True)
-        except TypeError:
-            self._main_thread = threading.Thread(target=self._wrap_start)
-            self._main_thread.daemon = True
-
-        self._main_thread.start()
+        pass
 
     def show(self, show_exit_option=None):
         """
@@ -216,28 +173,16 @@ class ConsoleMenu(object):
                 in the constructor
 
         """
-        self.start(show_exit_option)
-        self.join()
+        pass
 
     def _main_loop(self):
-        self._set_up_colors()
-        ConsoleMenu.currently_active_menu = self
-        self._running.set()
-
-        while self._running.wait() is not False and not self.should_exit:
-            self.clear_screen()
-            self.draw()
-            self.process_user_input()
+        pass
 
     def draw(self):
         """
         Refresh the screen and redraw the menu. Should be called whenever something changes that needs to be redrawn.
         """
-        self.screen.printf(self.formatter.format(title=self.get_title(),
-                                                 subtitle=self.get_subtitle(),
-                                                 items=self.items,
-                                                 prologue_text=self.get_prologue_text(),
-                                                 epilogue_text=self.get_epilogue_text()))
+        pass
 
     def is_running(self):
         """
@@ -246,7 +191,7 @@ class ConsoleMenu(object):
         Returns:
             bool: True if the menu is started and hasn't been paused; False otherwise.
         """
-        return self._running.is_set()
+        pass
 
     def wait_for_start(self, timeout=None):
         """
@@ -258,7 +203,7 @@ class ConsoleMenu(object):
         Returns:
             bool: False if timeout is given and operation times out, True otherwise. None before Python 2.7.
         """
-        return self._running.wait(timeout)
+        pass
 
     def is_alive(self):
         """
@@ -267,20 +212,19 @@ class ConsoleMenu(object):
         Returns:
             bool: True if the thread is still alive; False otherwise.
         """
-        return self._main_thread.is_alive()
+        pass
 
     def pause(self):
         """
         Temporarily pause the menu until resume is called.
         """
-        self._running.clear()
+        pass
 
     def resume(self):
         """
         Sets the currently active menu to this one and resumes it.
         """
-        ConsoleMenu.currently_active_menu = self
-        self._running.set()
+        pass
 
     def join(self, timeout=None):
         """
@@ -291,7 +235,7 @@ class ConsoleMenu(object):
             timeout (Number): How long to wait before timing out.
 
         """
-        self._main_thread.join(timeout=timeout)
+        pass
 
     def get_input(self):
         """
@@ -301,35 +245,13 @@ class ConsoleMenu(object):
         :return: the ordinal value of a single character
         :rtype: int
         """
-        return self.screen.input()
+        pass
 
     def process_user_input(self):
         """
         Gets the next single character and decides what to do with it
         """
-
-        try:
-            user_input = self.get_input()
-        except EOFError:
-            self.should_exit = True
-            return
-
-        # Process menu characters first
-        for i, cm in enumerate(self.items):
-            if cm.menu_char == user_input:
-                self.current_option = i
-                self.select()
-                return user_input
-
-        try:
-            num = int(user_input)
-        except Exception:
-            return
-        if 0 < num < len(self.items) + 1:
-            self.current_option = num - 1
-            self.select()
-
-        return user_input
+        pass
 
     def go_to(self, option):
         """
@@ -338,46 +260,31 @@ class ConsoleMenu(object):
         :param option: the option to go to
         :type option: int
         """
-        self.current_option = option
-        self.draw()
+        pass
 
     def go_down(self):
         """
         Go down one, wrap to beginning if necessary
         """
-        if self.current_option < len(self.items) - 1:
-            self.current_option += 1
-        else:
-            self.current_option = 0
-        self.draw()
+        pass
 
     def go_up(self):
         """
         Go up one, wrap to end if necessary
         """
-        if self.current_option > 0:
-            self.current_option += -1
-        else:
-            self.current_option = len(self.items) - 1
-        self.draw()
+        pass
 
     def select(self):
         """
         Select the current item and run it
         """
-        self.selected_option = self.current_option
-        self.selected_item.set_up()
-        self.selected_item.action()
-        self.selected_item.clean_up()
-        self.returned_value = self.selected_item.get_return()
-        self.should_exit = self.selected_item.should_exit
+        pass
 
     def exit(self):
         """
         Signal the menu to exit, then block until it's done cleaning up
         """
-        self.should_exit = True
-        self.join()
+        pass
 
     def _set_up_colors(self):
         # TODO add color support
@@ -390,21 +297,20 @@ class ConsoleMenu(object):
         """
         Clear the screen belonging to this menu
         """
-        if self.clear_screen_before_render:
-            self.screen.clear()
+        pass
 
     # Getters to get text in case method reference
     def get_title(self):
-        return self.title() if callable(self.title) else self.title
+        pass
 
     def get_subtitle(self):
-        return self.subtitle() if callable(self.subtitle) else self.subtitle
+        pass
 
     def get_prologue_text(self):
-        return self.prologue_text() if callable(self.prologue_text) else self.prologue_text
+        pass
 
     def get_epilogue_text(self):
-        return self.epilogue_text() if callable(self.epilogue_text) else self.epilogue_text
+        pass
 
 
 class MenuItem(object):
@@ -442,12 +348,7 @@ class MenuItem(object):
         :return: The representation of the item to be shown in a menu
         :rtype: str
         """
-        self.index = index + 1
-        if self.menu_char is None:
-            ret = "%2d%s%s" % (index + 1, self.index_item_separator, self.get_text())
-        else:
-            ret = " %c%s%s" % (self.menu_char, self.index_item_separator, self.get_text())
-        return ret
+        pass
 
     def set_up(self):
         """
@@ -472,14 +373,14 @@ class MenuItem(object):
         Override to change what the item returns.
         Otherwise just returns the same value the last selected item did.
         """
-        return self.menu.returned_value
+        pass
 
     def __eq__(self, o):
         return self.text == o.text and self.menu == o.menu and self.should_exit == o.should_exit
 
     # Getters to get text in case method reference
     def get_text(self):
-        return self.text() if callable(self.text) else self.text
+        pass
 
 
 class ExitItem(MenuItem):
@@ -494,18 +395,11 @@ class ExitItem(MenuItem):
         """
         ExitItem overrides this method to display appropriate Exit or Return text.
         """
-        # If we have a parent menu, and no overriding exit text was specified,
-        # change Exit text to "Return to {Parent Menu Title}"
-        if self.menu and self.menu.parent and self.get_text() == 'Exit':
-            self.text = "Return to %s" % self.menu.parent.get_title()
-        return super(ExitItem, self).show(index)
+        pass
 
 
 def clear_terminal():
     """
     Call the platform specific function to clear the terminal: cls on windows, reset otherwise
     """
-    if platform.system().lower() == "windows":
-        os.system('cls')
-    else:
-        os.system('reset')
+    pass

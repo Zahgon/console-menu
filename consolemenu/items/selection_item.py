@@ -21,4 +21,4 @@ class SelectionItem(MenuItem):
         :return: The index of this item in the list of strings
         :rtype: int
         """
-        return self.index
+        pass

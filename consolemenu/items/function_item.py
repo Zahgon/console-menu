@@ -35,16 +35,16 @@ class FunctionItem(ExternalItem):
         """
         This class overrides this method
         """
-        self.return_value = self.function(*self.args, **self.kwargs)
+        pass
 
     def clean_up(self):
         """
         This class overrides this method
         """
-        self.menu.resume()
+        pass
 
     def get_return(self):
         """
         :return: The return value from the function call
         """
-        return self.return_value
+        pass

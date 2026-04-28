@@ -41,9 +41,7 @@ class MultiSelectMenu(ConsoleMenu):
         Raises:
             TypeError: If the specified MenuIem is a SubmenuItem.
         """
-        if isinstance(item, SubmenuItem):
-            raise TypeError("SubmenuItems cannot be added to a MultiSelectMenu")
-        super(MultiSelectMenu, self).append_item(item)
+        pass
 
     def process_user_input(self):
         """
@@ -59,29 +57,11 @@ class MultiSelectMenu(ConsoleMenu):
         Raises:
             ValueError: If the input cannot be correctly parsed.
         """
-        user_input = self.screen.input()
-
-        try:
-            indexes = self.__parse_range_list(user_input)
-            # Subtract 1 from each number for its actual index number
-            indexes[:] = [x - 1 for x in indexes if 0 < x < len(self.items) + 1]
-            for index in indexes:
-                self.current_option = index
-                self.select()
-        except Exception as e:
-            return
+        pass
 
     @staticmethod
     def __parse_range(rng):
-        parts = rng.split('-')
-        if 1 > len(parts) > 2:
-            raise ValueError("Bad range: '%s'" % (rng,))
-        parts = [int(i) for i in parts]
-        start = parts[0]
-        end = start if len(parts) == 1 else parts[1]
-        if start > end:
-            end, start = start, end
-        return range(start, end + 1)
+        pass
 
     def __parse_range_list(self, rngs):
-        return sorted(set(itertools.chain(*[self.__parse_range(rng) for rng in rngs.split(',')])))
+        pass

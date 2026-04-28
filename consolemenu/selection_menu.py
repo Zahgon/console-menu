@@ -47,12 +47,7 @@ class SelectionMenu(ConsoleMenu):
             int: The index of the selected option.
 
         """
-        menu = cls(strings, title, subtitle, show_exit_option=show_exit_option)
-        if _menu is not None:
-            _menu.append(menu)
-        menu.show()
-        menu.join()
-        return menu.selected_option
+        pass
 
     def append_string(self, string):
-        self.append_item(SelectionItem(string))
+        pass

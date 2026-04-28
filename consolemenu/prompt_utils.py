@@ -34,15 +34,7 @@ class PromptFormatter(object):
         Returns:
             str: The formatted prompt string.
         """
-        if prompt is None:
-            return None
-        prompt = prompt.rstrip()
-        prompt = prompt.rstrip(':')
-        if enable_quit:
-            prompt = "{0} {1}".format(prompt, quit_message)
-        if default:
-            prompt = "{0} [{1}]".format(prompt, default)
-        return "{0}: ".format(prompt)
+        pass
 
 
 class PromptUtils(object):
@@ -70,13 +62,13 @@ class PromptUtils(object):
         """
         :obj:`consolemenu.screen.Screen`: The Screen instance.
         """
-        return self.__screen
+        pass
 
     def clear(self):
         """
         Clear the screen.
         """
-        self.__screen.clear()
+        pass
 
     def confirm_answer(self, answer, message=None):
         """
@@ -91,9 +83,7 @@ class PromptUtils(object):
             bool: True if the user confirmed Yes, or False if user specified No.
 
         """
-        if message is None:
-            message = "\nYou entered {0}.  Is this correct?".format(answer)
-        return self.prompt_for_yes_or_no(message)
+        pass
 
     def enter_to_continue(self, message=None):
         """
@@ -102,11 +92,7 @@ class PromptUtils(object):
         Args:
             message (str, optional): A message to display in place of the default.
         """
-        if message:
-            message = message.rstrip() + ' '
-        else:
-            message = 'Press [Enter] to continue '
-        self.__screen.input(message)
+        pass
 
     def input(self, prompt=None, default=None, validators=None, enable_quit=False, quit_string='q',
               quit_message='(enter q to Quit)'):
@@ -125,20 +111,7 @@ class PromptUtils(object):
             InputResult: an InputResult tuple.
 
         """
-        prompt = self.__prompt_formatter.format_prompt(prompt=prompt, default=default, enable_quit=enable_quit,
-                                                       quit_string=quit_string, quit_message=quit_message)
-
-        input_string = self.__screen.input(prompt=prompt)
-
-        if enable_quit and quit_string == input_string:
-            raise UserQuit
-
-        if default is not None and input_string.strip() == '':
-            input_string = default
-
-        validation_result = self.validate_input(input_string, validators)
-
-        return InputResult(input_string=input_string, validation_result=validation_result)
+        pass
 
     def input_password(self, message=None):
         """
@@ -152,15 +125,7 @@ class PromptUtils(object):
         Returns:
             str: The password provided by the user.
         """
-        message = self.__prompt_formatter.format_prompt(message)
-        try:
-            if message:
-                return getpass.getpass(message)
-            else:
-                return getpass.getpass()
-        except BaseException:
-            self.__screen.println('Warning: Unable to mask input; characters will be echoed to console')
-            return self.input(message)
+        pass
 
     def printf(self, *args):
         """
@@ -169,7 +134,7 @@ class PromptUtils(object):
         Args:
             *args: Variable length argument list.
         """
-        self.__screen.printf(*args)
+        pass
 
     def println(self, *args):
         """
@@ -178,7 +143,7 @@ class PromptUtils(object):
         Args:
             *args: Variable length argument list.
         """
-        self.__screen.println(*args)
+        pass
 
     def prompt_and_confirm_password(self, message):
         """
@@ -192,13 +157,7 @@ class PromptUtils(object):
         Returns:
             str: The password.
         """
-        while True:
-            pwd = self.input_password(message)
-            cpwd = self.input_password("Confirm password")
-            if pwd == cpwd:
-                return pwd
-            else:
-                self.__screen.println("Passwords do not match.")
+        pass
 
     def prompt_for_bilateral_choice(self, prompt, option1, option2):
         """
@@ -216,15 +175,7 @@ class PromptUtils(object):
             str: The choice selected by the user.
 
         """
-        if prompt is None:
-            prompt = ''
-        prompt = prompt.rstrip() + ' (' + option1 + '/' + option2 + ')'
-        while True:
-            user_input = self.__screen.input(prompt)
-            if str(user_input).lower() == option1.lower():
-                return option1
-            elif str(user_input).lower() == option2.lower():
-                return option2
+        pass
 
     def prompt_for_trilateral_choice(self, prompt, option1, option2, option3):
         """
@@ -242,17 +193,7 @@ class PromptUtils(object):
         Returns:
             str: The choice selected by the user.
         """
-        if prompt is None:
-            prompt = ''
-        prompt = prompt.rstrip() + ' (' + option1 + '/' + option2 + '/' + option3 + ')'
-        while True:
-            user_input = self.__screen.input(prompt)
-            if str(user_input).lower() == option1.lower():
-                return option1
-            elif str(user_input).lower() == option2.lower():
-                return option2
-            elif str(user_input).lower() == option3.lower():
-                return option3
+        pass
 
     def prompt_for_yes_or_no(self, prompt):
         """
@@ -265,8 +206,7 @@ class PromptUtils(object):
         Returns:
             bool: True for yes, False for no.
         """
-        user_input = self.prompt_for_bilateral_choice(prompt, 'y', 'n')
-        return user_input == 'y'
+        pass
 
     def prompt_for_numbered_choice(self, choices, title=None, prompt=">"):
         """
@@ -280,26 +220,7 @@ class PromptUtils(object):
         Returns:
             int: The index of selected choice.
         """
-        if choices is None or len(choices) < 1:
-            raise Exception('choices list must contain at least one element.')
-
-        while True:
-            self.clear()
-
-            if title:
-                self.screen.println(title + "\n")
-
-            for i in range(0, len(choices)):
-                print('   {:<4}{choice}'.format(str(i + 1) + ') ', choice=choices[i]))
-
-            answer = self.screen.input('\n{} '.format(prompt))
-
-            try:
-                index = int(answer) - 1
-                if 0 <= index < len(choices):
-                    return index
-            except Exception as e:
-                continue
+        pass
 
     def validate_input(self, input_string, validators):
         """
@@ -315,26 +236,7 @@ class PromptUtils(object):
         Raises:
             InvalidValidator: If the list of validators contains an invalid BaseValidator class.
         """
-        validation_result = True
-
-        if isinstance(validators, BaseValidator):
-            validators = [validators]
-        elif validators is None:
-            validators = []
-
-        if isinstance(validators, list):
-            validation_results = []
-            for validator in validators:
-                if isinstance(validator, BaseValidator):
-                    validation_results.append(validator.validate(input_string=input_string))
-                else:
-                    raise InvalidValidator("Validator {} is not a valid validator".format(validator))
-
-            validation_result = all(validation_results)
-        else:
-            raise InvalidValidator("Validator {} is not a valid validator".format(validators))
-
-        return validation_result
+        pass
 
 
 class UserQuit(Exception):

@@ -31,16 +31,11 @@ class CommandItem(ExternalItem):
         """
         This class overrides this method
         """
-        commandline = "{0} {1}".format(self.command, " ".join(self.arguments))
-        try:
-            completed_process = subprocess.run(commandline, shell=True)
-            self.exit_status = completed_process.returncode
-        except AttributeError:
-            self.exit_status = subprocess.call(commandline, shell=True)
+        pass
 
     def get_return(self):
         """
         :return: the exit status of the command
         :rtype: int
         """
-        return self.exit_status
+        pass

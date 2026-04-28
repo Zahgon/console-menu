@@ -20,31 +20,28 @@ class Screen(object):
         """
         int: The screen height in rows.
         """
-        return self.__height
+        pass
 
     @property
     def screen_width(self):
         """
         int: The screen width in columns.
         """
-        return self.__width
+        pass
 
     @staticmethod
     def clear():
         """
         Clear the screen.
         """
-        if platform.system() == 'Windows':
-            subprocess.check_call('cls', shell=True)
-        else:
-            print(subprocess.check_output('clear').decode())
+        pass
 
     @staticmethod
     def flush():
         """
         Flush any buffered standard output to screen.
         """
-        sys.stdout.flush()
+        pass
 
     def input(self, prompt=''):
         """
@@ -56,10 +53,7 @@ class Screen(object):
         Returns:
             The input provided by the user.
         """
-        if sys.version[0] == '2':
-            return raw_input(prompt)
-        else:
-            return input(prompt)
+        pass
 
     @staticmethod
     def printf(*args):
@@ -69,7 +63,7 @@ class Screen(object):
         Args:
             *args: Variable length argument list.
         """
-        print(*args, end='')
+        pass
 
     @staticmethod
     def println(*args):
@@ -79,4 +73,4 @@ class Screen(object):
         Args:
             *args: Variable length argument list.
         """
-        print(*args)
+        pass

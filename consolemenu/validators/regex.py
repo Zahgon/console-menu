@@ -11,7 +11,7 @@ class RegexValidator(BaseValidator):
 
     @property
     def pattern(self):
-        return self.__pattern
+        pass
 
     def validate(self, input_string):
         """
@@ -19,12 +19,4 @@ class RegexValidator(BaseValidator):
 
         :return: True if match / False otherwise
         """
-        validation_result = False
-        try:
-            validation_result = bool(match(pattern=self.pattern, string=input_string))
-        except TypeError as e:
-            self.log.error(
-                'Exception while validating Regex, pattern={}, input_string={} - exception: {}'.format(self.pattern,
-                                                                                                       input_string,
-                                                                                                       e))
-        return validation_result
+        pass

@@ -25,11 +25,11 @@ class MenuMargins(object):
             int: The left margin.
 
         """
-        return self.__left
+        pass
 
     @left.setter
     def left(self, left):
-        self.__left = left
+        pass
 
     @property
     def right(self):
@@ -39,11 +39,11 @@ class MenuMargins(object):
         Returns:
             int: The right margin.
         """
-        return self.__right
+        pass
 
     @right.setter
     def right(self, right):
-        self.__right = right
+        pass
 
     @property
     def top(self):
@@ -53,11 +53,11 @@ class MenuMargins(object):
         Returns:
             int: The top margin.
         """
-        return self.__top
+        pass
 
     @top.setter
     def top(self, top):
-        self.__top = top
+        pass
 
     @property
     def bottom(self):
@@ -67,8 +67,8 @@ class MenuMargins(object):
         Returns:
             int: The bottom margin.
         """
-        return self.__bottom
+        pass
 
     @bottom.setter
     def bottom(self, bottom):
-        self.__bottom = bottom
+        pass

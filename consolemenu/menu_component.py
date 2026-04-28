@@ -14,10 +14,7 @@ def ansilen(s):
     Returns:
         int: The string length.
     """
-    if hasattr(textwrap, 'ansilen'):
-        return textwrap.ansilen(s)
-    else:
-        return len(s)
+    pass
 
 
 class Dimension(object):
@@ -64,35 +61,35 @@ class MenuComponent(object):
         """
         :obj:`Dimension`: The maximum dimension for the menu.
         """
-        return self.__max_dimension
+        pass
 
     @property
     def style(self):
         """
         :obj:`consolemenu.format.MenuStyle`: The style for this component.
         """
-        return self.__style
+        pass
 
     @property
     def margins(self):
         """
         :obj:`consolemenu.format.MenuMargins`: The margins for this component.
         """
-        return self.__style.margins
+        pass
 
     @property
     def padding(self):
         """
         :obj:`consolemenu.format.MenuPadding`: The padding for this component.
         """
-        return self.__style.padding
+        pass
 
     @property
     def border_style(self):
         """
         :obj:`consolemenu.format.MenuBorderStyle`: The border style for this component.
         """
-        return self.__style.border_style
+        pass
 
     def calculate_border_width(self):
         """
@@ -104,7 +101,7 @@ class MenuComponent(object):
         Returns:
             int: the menu border width in columns.
         """
-        return self.max_dimension.width - self.margins.left - self.margins.right - 1  # 1=newline
+        pass
 
     def calculate_content_width(self):
         """
@@ -116,7 +113,7 @@ class MenuComponent(object):
         Returns:
             int: the inner content width in columns.
         """
-        return self.calculate_border_width() - self.padding.left - self.padding.right - 2
+        pass
 
     def generate(self):
         """
@@ -135,7 +132,7 @@ class MenuComponent(object):
         Returns:
             str: The inner horizontal characters.
         """
-        return u"{0}".format(self.border_style.inner_horizontal * (self.calculate_border_width() - 2))
+        pass
 
     def inner_horizontal_border(self):
         """
@@ -144,10 +141,7 @@ class MenuComponent(object):
         Returns:
             str: The complete inner horizontal border.
         """
-        return u"{lm}{lv}{hz}{rv}".format(lm=' ' * self.margins.left,
-                                          lv=self.border_style.outer_vertical_inner_right,
-                                          rv=self.border_style.outer_vertical_inner_left,
-                                          hz=self.inner_horizontals())
+        pass
 
     def outer_horizontals(self):
         """
@@ -157,7 +151,7 @@ class MenuComponent(object):
         Returns:
             str: The outer horizontal characters.
         """
-        return u"{0}".format(self.border_style.outer_horizontal * (self.calculate_border_width() - 2))
+        pass
 
     def outer_horizontal_border_bottom(self):
         """
@@ -166,10 +160,7 @@ class MenuComponent(object):
         Returns:
             str: The bottom menu border.
         """
-        return u"{lm}{lv}{hz}{rv}".format(lm=' ' * self.margins.left,
-                                          lv=self.border_style.bottom_left_corner,
-                                          rv=self.border_style.bottom_right_corner,
-                                          hz=self.outer_horizontals())
+        pass
 
     def outer_horizontal_border_top(self):
         """
@@ -178,10 +169,7 @@ class MenuComponent(object):
         Returns:
             str: The top menu border.
         """
-        return u"{lm}{lv}{hz}{rv}".format(lm=' ' * self.margins.left,
-                                          lv=self.border_style.top_left_corner,
-                                          rv=self.border_style.top_right_corner,
-                                          hz=self.outer_horizontals())
+        pass
 
     def _generate_single_row(self, content='', align='left'):
         """
@@ -190,9 +178,7 @@ class MenuComponent(object):
         Returns:
             str: A row of this menu component with the specified content.
         """
-        return u"{lm}{vert}{cont}{vert}".format(lm=' ' * self.margins.left,
-                                                vert=self.border_style.outer_vertical,
-                                                cont=self._format_content(content, align))
+        pass
 
     def row(self, content='', align='left', indent_len=0):
         """
@@ -203,41 +189,14 @@ class MenuComponent(object):
         Returns:
             str: One or more rows of this menu component with the specified content.
         """
-        if len(content) == 0:
-            return self._generate_single_row()
-        # split on user newlines
-        content = content.splitlines()
-        lines = []
-        indent = ' '*indent_len
-
-        for line in content:
-            if line != content[0]:
-                # apply indentation to any lines after the first that were split by a users newline
-                line = indent + line
-            # apply any wrapping and indentation if the line is still too long
-            wrapped = textwrap.wrap(line, width=self.calculate_content_width(), subsequent_indent=indent)
-            for wrapline in wrapped:
-                # Finally, this adds the borders and things to the string
-                # TODO: check compatability on super() calls
-                lines.append(self._generate_single_row(wrapline, align))
-        return '\n'.join(lines)
+        pass
 
     @staticmethod
     def _alignment_char(align):
-        if str(align).strip() == 'center':
-            return '^'
-        elif str(align).strip() == 'right':
-            return '>'
-        else:
-            return '<'
+        pass
 
     def _format_content(self, content='', align='left'):
-        invisible_chars = len(content) - ansilen(content)
-        return '{lp}{text:{al}{width}}{rp}'.format(lp=' ' * self.padding.left,
-                                                   rp=' ' * self.padding.right,
-                                                   text=content, al=self._alignment_char(align),
-                                                   width=(self.calculate_border_width() - self.padding.left -
-                                                          self.padding.right - 2 + invisible_chars))
+        pass
 
 
 class MenuHeader(MenuComponent):
@@ -257,20 +216,7 @@ class MenuHeader(MenuComponent):
         self.show_bottom_border = show_bottom_border
 
     def generate(self):
-        for x in range(0, self.margins.top):
-            yield ''
-        yield self.outer_horizontal_border_top()
-        for x in range(0, self.padding.top):
-            yield self.row()
-        if self.title is not None and self.title != '':
-            yield self.row(content=self.title, align=self.title_align)
-        if self.subtitle is not None and self.subtitle != '':
-            yield self.row()
-            yield self.row(content=self.subtitle, align=self.subtitle_align)
-        for x in range(0, self.padding.bottom):
-            yield self.row()
-        if self.show_bottom_border:
-            yield self.inner_horizontal_border()
+        pass
 
 
 class MenuTextSection(MenuComponent):
@@ -288,16 +234,7 @@ class MenuTextSection(MenuComponent):
         self.show_bottom_border = show_bottom_border
 
     def generate(self):
-        if self.show_top_border:
-            yield self.inner_horizontal_border()
-        for x in range(0, self.padding.top):
-            yield self.row()
-        if self.text is not None and self.text != '':
-            yield self.row(content=self.text, align=self.text_align)
-        for x in range(0, self.padding.bottom):
-            yield self.row()
-        if self.show_bottom_border:
-            yield self.inner_horizontal_border()
+        pass
 
 
 class MenuItemsSection(MenuComponent):
@@ -317,11 +254,11 @@ class MenuItemsSection(MenuComponent):
 
     @property
     def items(self):
-        return self.__items
+        pass
 
     @items.setter
     def items(self, items):
-        self.__items = items
+        pass
 
     @property
     def items_with_bottom_border(self):
@@ -329,7 +266,7 @@ class MenuItemsSection(MenuComponent):
         Return a list of the names (the item text property) of all items that should show a bottom border.
         :return: a list of item names that should show a bottom border.
         """
-        return self.__bottom_border_dict.keys()
+        pass
 
     @property
     def items_with_top_border(self):
@@ -337,7 +274,7 @@ class MenuItemsSection(MenuComponent):
         Return a list of the names (the item text property) of all items that should show a top border.
         :return: a list of item names that should show a top border.
         """
-        return self.__top_border_dict.keys()
+        pass
 
     def show_item_bottom_border(self, item_text, flag):
         """
@@ -345,10 +282,7 @@ class MenuItemsSection(MenuComponent):
         :param item_text: the text property of the item
         :param flag: boolean specifying if the border should be shown.
         """
-        if flag:
-            self.__bottom_border_dict[item_text] = True
-        else:
-            self.__bottom_border_dict.pop(item_text, None)
+        pass
 
     def show_item_top_border(self, item_text, flag):
         """
@@ -356,24 +290,10 @@ class MenuItemsSection(MenuComponent):
         :param item_text: the text property of the item
         :param flag: boolean specifying if the border should be shown.
         """
-        if flag:
-            self.__top_border_dict[item_text] = True
-        else:
-            self.__top_border_dict.pop(item_text, None)
+        pass
 
     def generate(self):
-        for x in range(0, self.padding.top):
-            yield self.row()
-        for index, item in enumerate(self.items):
-            if item.text in self.items_with_top_border:
-                yield self.inner_horizontal_border()
-            # the length of the separator plus the length of the longest index number
-            indent_size = len(item.index_item_separator) + len(str(len(self.items)))
-            yield self.row(content=item.show(index), align=self.items_align, indent_len=indent_size)
-            if item.text in self.items_with_bottom_border:
-                yield self.inner_horizontal_border()
-        for x in range(0, self.padding.bottom):
-            yield self.row()
+        pass
 
 
 class MenuFooter(MenuComponent):
@@ -383,11 +303,7 @@ class MenuFooter(MenuComponent):
     """
 
     def generate(self):
-        for x in range(0, self.padding.top):
-            yield self.row()
-        yield self.outer_horizontal_border_bottom()
-        for x in range(0, self.margins.bottom):
-            yield ''
+        pass
 
 
 class MenuPrompt(MenuComponent):
@@ -401,14 +317,11 @@ class MenuPrompt(MenuComponent):
 
     @property
     def prompt(self):
-        return self.__prompt
+        pass
 
     @prompt.setter
     def prompt(self, prompt):
-        self.__prompt = prompt
+        pass
 
     def generate(self):
-        for x in range(0, self.padding.top):
-            yield ''
-        for line in self.prompt.split():
-            yield u"{lm}{line} ".format(lm=' ' * self.margins.left, line=line)
+        pass

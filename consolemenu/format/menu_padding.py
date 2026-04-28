@@ -23,11 +23,11 @@ class MenuPadding(object):
         Returns:
             int: The left padding.
         """
-        return self.__left
+        pass
 
     @left.setter
     def left(self, left):
-        self.__left = left
+        pass
 
     @property
     def right(self):
@@ -37,11 +37,11 @@ class MenuPadding(object):
         Returns:
             int: The right padding.
         """
-        return self.__right
+        pass
 
     @right.setter
     def right(self, right):
-        self.__right = right
+        pass
 
     @property
     def top(self):
@@ -51,11 +51,11 @@ class MenuPadding(object):
         Returns:
             int: The top padding.
         """
-        return self.__top
+        pass
 
     @top.setter
     def top(self, top):
-        self.__top = top
+        pass
 
     @property
     def bottom(self):
@@ -65,8 +65,8 @@ class MenuPadding(object):
         Returns:
             int: The bottom padding.
         """
-        return self.__bottom
+        pass
 
     @bottom.setter
     def bottom(self, bottom):
-        self.__bottom = bottom
+        pass
